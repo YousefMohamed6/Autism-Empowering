@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "527846771644",
+    "project_id": "autism-empowering-7a6ff",
+    "storage_bucket": "autism-empowering-7a6ff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:527846771644:android:1b3c21e49036911f93b9b9",
+        "android_client_info": {
+          "package_name": "com.example.autism_empowering"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFaX_IJnRyVUT1SDNt9VLUCZdyUklOjYw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
