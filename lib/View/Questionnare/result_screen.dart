@@ -4,7 +4,7 @@ import 'package:autism_empowering/Controller/Const/component.dart';
 import 'package:autism_empowering/Controller/Const/texts.dart';
 import 'package:autism_empowering/Model/child_info_model.dart';
 import 'package:autism_empowering/View/Check%20Diagonsis/check_by_image.dart';
-import 'package:autism_empowering/View/patient_screen.dart';
+import 'package:autism_empowering/View/Child%20Info/patient_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

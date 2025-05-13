@@ -11,7 +11,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../patient_screen.dart';
+import '../Child Info/patient_screen.dart';
 
 class CheckByFMRI extends StatelessWidget {
   const CheckByFMRI({super.key});

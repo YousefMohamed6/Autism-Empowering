@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:autism_empowering/View/Auth/login.dart';
-import 'package:autism_empowering/View/main_app.dart';
+import 'package:autism_empowering/main_app.dart';
 import 'package:autism_empowering/main.dart';
 import 'package:get/get.dart';
 

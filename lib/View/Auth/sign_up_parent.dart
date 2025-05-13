@@ -99,7 +99,7 @@ class _SignUpParentScreenState extends State<SignUpParentScreen> {
                     SizedBox(height: 20.h),
                     FadeInLeft(
                         child: Center(
-                            child: text('Sign Up As Doctor', fontSize: 25.sp))),
+                            child: text('Sign Up As Parent', fontSize: 25.sp))),
                     SizedBox(height: 20.h),
                     FadeInRight(
                       child: CustomTextField(

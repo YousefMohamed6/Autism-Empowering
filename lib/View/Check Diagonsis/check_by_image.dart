@@ -5,13 +5,13 @@ import 'package:animate_do/animate_do.dart';
 import 'package:autism_empowering/Controller/Const/colors.dart';
 import 'package:autism_empowering/Controller/Const/images.dart';
 import 'package:autism_empowering/Controller/Const/texts.dart';
-import 'package:autism_empowering/View/patient_screen.dart';
+import 'package:autism_empowering/View/Child%20Info/patient_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:tflite_v2/tflite_v2.dart';
+import 'package:tflite/tflite.dart';
 
 class CheckByImage extends StatelessWidget {
   const CheckByImage({super.key});

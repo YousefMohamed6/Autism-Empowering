@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "527846771644",
-    "project_id": "autism-empowering-7a6ff",
-    "storage_bucket": "autism-empowering-7a6ff.appspot.com"
+    "project_number": "1020786147454",
+    "project_id": "autism-empowering-dc0fb",
+    "storage_bucket": "autism-empowering-dc0fb.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:527846771644:android:1b3c21e49036911f93b9b9",
+        "mobilesdk_app_id": "1:1020786147454:android:17d6c6292d7c47aa53182f",
         "android_client_info": {
           "package_name": "com.example.autism_empowering"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCFaX_IJnRyVUT1SDNt9VLUCZdyUklOjYw"
+          "current_key": "AIzaSyAminFFLscLbPu6547SIqIpnzYTh69QiMw"
         }
       ],
       "services": {

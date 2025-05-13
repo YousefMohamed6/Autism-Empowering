@@ -4,6 +4,7 @@ import 'package:autism_empowering/View/clock_game/score/logic/score_cubit.dart';
 import 'package:autism_empowering/View/clock_game/settings/logic/settings_cubit.dart';
 import 'package:autism_empowering/View/clock_game/storage/storage_shared_preferences.dart';
 import 'package:autism_empowering/View/puzzle_game/res/palette.dart';
+import 'package:autism_empowering/firebase_options.dart';
 import 'package:autism_empowering/l10n/l10n.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -22,14 +23,16 @@ import 'Controller/Const/texts.dart';
 SharedPreferences? pref;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   OneSignal.Debug.setLogLevel(OSLogLevel.verbose);
 
   OneSignal.initialize(oneSignalAppId);
 
-  OneSignal.Notifications.requestPermission(true);
+  await OneSignal.Notifications.requestPermission(true);
   OneSignal.User.getOnesignalId();
-  AwesomeNotifications().initialize(
+  await AwesomeNotifications().initialize(
     '',
     [
       NotificationChannel(

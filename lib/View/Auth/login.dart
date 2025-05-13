@@ -5,7 +5,7 @@ import 'package:autism_empowering/Controller/Const/images.dart';
 import 'package:autism_empowering/Controller/Const/texts.dart';
 import 'package:autism_empowering/Controller/Const/toast.dart';
 import 'package:autism_empowering/View/Auth/choose_type.dart';
-import 'package:autism_empowering/View/main_app.dart';
+import 'package:autism_empowering/main_app.dart';
 import 'package:autism_empowering/main.dart';
 import 'package:blurry_modal_progress_hud/blurry_modal_progress_hud.dart';
 import 'package:firebase_auth/firebase_auth.dart';
