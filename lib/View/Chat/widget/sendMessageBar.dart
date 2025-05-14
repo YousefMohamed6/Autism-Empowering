@@ -1,5 +1,5 @@
-import 'package:autism_empowering/Controller/Const/colors.dart';
-import 'package:autism_empowering/Controller/Const/images.dart';
+import 'package:autism_empowering/core/utils/constants/colors.dart';
+import 'package:autism_empowering/core/utils/constants/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -46,7 +46,7 @@ class CustomSenderBar extends StatelessWidget {
                 ),
                 child: const Icon(
                   Icons.camera_enhance_outlined,
-                  color: primaryColor,
+                  color: AppColors.primaryColor,
                 ),
               ),
             ),
@@ -61,7 +61,7 @@ class CustomSenderBar extends StatelessWidget {
                   style: TextStyle(
                       fontFamily: 'tajwal',
                       fontSize: 14.sp,
-                      color: primaryColor),
+                      color: AppColors.primaryColor),
                   decoration: InputDecoration(
                     hintText: 'أكتب رسالتك هنا',
                     hintStyle: TextStyle(
@@ -71,7 +71,7 @@ class CustomSenderBar extends StatelessWidget {
                     suffixIcon: GestureDetector(
                       onTap: sendFile,
                       child: SvgPicture.asset(
-                        attach,
+                        AppImages.attach,
                         fit: BoxFit.scaleDown,
                         color: Colors.grey.shade300,
                       ),
@@ -79,7 +79,7 @@ class CustomSenderBar extends StatelessWidget {
                     prefixIcon: GestureDetector(
                       onTap: sendAudio,
                       child: SvgPicture.asset(
-                        mic,
+                        AppImages.mic,
                         fit: BoxFit.scaleDown,
                         color: micColor,
                       ),
@@ -118,10 +118,10 @@ class CustomSenderBar extends StatelessWidget {
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12.r),
-                  color: primaryColor,
+                  color: AppColors.primaryColor,
                 ),
                 child: SvgPicture.asset(
-                  send,
+                  AppImages.send,
                   color: Colors.white,
                   fit: BoxFit.scaleDown,
                   height: 30.h,

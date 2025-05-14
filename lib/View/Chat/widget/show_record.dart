@@ -1,11 +1,11 @@
-import 'package:autism_empowering/Controller/Const/colors.dart';
-import 'package:autism_empowering/Controller/Const/texts.dart';
+import 'package:autism_empowering/core/utils/constants/colors.dart';
+import 'package:autism_empowering/core/utils/constants/texts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:voice_message_package/voice_message_package.dart';
 
-import '../../../Controller/Chat/send_audio.dart';
+import '../Chat/send_audio.dart';
 
 class ShowRecord extends StatefulWidget {
   const ShowRecord(
@@ -28,7 +28,7 @@ class _ShowRecordState extends State<ShowRecord> {
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
-                  color: primaryColor,
+                  color: AppColors.primaryColor,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,

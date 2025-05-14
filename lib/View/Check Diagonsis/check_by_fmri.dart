@@ -2,9 +2,9 @@ import 'dart:io';
 import 'dart:ui';
 
 import 'package:animate_do/animate_do.dart';
-import 'package:autism_empowering/Controller/Const/colors.dart';
-import 'package:autism_empowering/Controller/Const/images.dart';
-import 'package:autism_empowering/Controller/Const/texts.dart';
+import 'package:autism_empowering/core/utils/constants/colors.dart';
+import 'package:autism_empowering/core/utils/constants/images.dart';
+import 'package:autism_empowering/core/utils/constants/texts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -79,8 +79,8 @@ class _DottedBorderImagePickerState extends State<DottedBorderImagePicker> {
             child: _imageFile != null
                 ? Image.file(_imageFile!, fit: BoxFit.cover)
                 : SvgPicture.asset(
-                    image,
-                    color: primaryColor,
+                    AppImages.image,
+                    color: AppColors.primaryColor,
                   ),
           ),
         ),

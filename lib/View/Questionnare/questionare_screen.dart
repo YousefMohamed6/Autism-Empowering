@@ -1,9 +1,10 @@
-import 'package:autism_empowering/Controller/Const/colors.dart';
-import 'package:autism_empowering/Controller/Const/component.dart';
-import 'package:autism_empowering/Controller/Const/texts.dart';
-import 'package:autism_empowering/Controller/Const/toast.dart';
+import 'package:autism_empowering/core/utils/toast.dart';
 import 'package:autism_empowering/Model/child_info_model.dart';
 import 'package:autism_empowering/View/Questionnare/result_screen.dart';
+import 'package:autism_empowering/core/enums/toast_type.dart';
+import 'package:autism_empowering/core/utils/constants/colors.dart';
+import 'package:autism_empowering/core/utils/constants/component.dart';
+import 'package:autism_empowering/core/utils/constants/texts.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -112,11 +113,11 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
     });
 
     if (completedQuestionnaire) {
-      displaySuccessMotionToast(
-          context: context,
-          title: 'Questionnaire Complete',
-          description: 'You have already completed the questionnaire.',
-          status: 1);
+      displayToast(
+        title: 'Questionnaire Complete',
+        description: 'You have already completed the questionnaire.',
+        status: ToastStatus.success,
+      );
     }
   }
 
@@ -156,7 +157,7 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
                     padding: const EdgeInsets.all(30),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25.r),
-                        color: primaryColor.withOpacity(0.3)),
+                        color: AppColors.primaryColor.withOpacity(0.3)),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -195,7 +196,7 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
                 )
               : const Center(
                   child: SpinKitCircle(
-                    color: primaryColor,
+                    color: AppColors.primaryColor,
                     size: 30,
                   ),
                 ),

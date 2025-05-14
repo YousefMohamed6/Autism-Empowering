@@ -2,29 +2,27 @@ import 'dart:io';
 import 'dart:ui';
 
 import 'package:animate_do/animate_do.dart';
-import 'package:autism_empowering/Controller/Auth/auth_service.dart';
-import 'package:autism_empowering/Controller/Const/colors.dart';
-import 'package:autism_empowering/Controller/Const/component.dart';
 import 'package:autism_empowering/View/Doctors/doctor_follow_requests.dart';
+import 'package:autism_empowering/core/utils/constants/colors.dart';
+import 'package:autism_empowering/core/utils/constants/component.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../Controller/Const/images.dart';
-import '../../Controller/Const/texts.dart';
+import '../../core/utils/constants/images.dart';
+import '../../core/utils/constants/texts.dart';
 import 'doctor_approved_screen.dart';
 
 class DoctorScreen extends StatefulWidget {
   const DoctorScreen({super.key});
-
+static const String routeName = '/doctor-screen';
   @override
   State<DoctorScreen> createState() => _DoctorScreenState();
 }
 
 class _DoctorScreenState extends State<DoctorScreen> {
-  AuthService authService = Get.put(AuthService());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +30,8 @@ class _DoctorScreenState extends State<DoctorScreen> {
         child: ListView(
           children: [
             const SizedBox(height: 20),
-            SizedBox(height: 100, width: 100, child: Image.asset(logo)),
+            SizedBox(
+                height: 100, width: 100, child: Image.asset(AppImages.logo)),
             Divider(
               height: 60,
               color: Colors.grey.shade200,
@@ -55,7 +54,6 @@ class _DoctorScreenState extends State<DoctorScreen> {
             const SizedBox(height: 10),
             CustomDrawerItem(
               onPressed: () {
-                authService.signOut(context: context);
               },
               title: 'Logout',
             ),
@@ -112,8 +110,8 @@ class _DottedBorderImagePickerState extends State<DottedBorderImagePicker> {
                 child: _imageFile != null
                     ? Image.file(_imageFile!, fit: BoxFit.cover)
                     : SvgPicture.asset(
-                        image,
-                        color: primaryColor,
+                        AppImages.image,
+                        color: AppColors.primaryColor,
                       ),
               ),
             ),

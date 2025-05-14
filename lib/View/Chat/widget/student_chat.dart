@@ -1,4 +1,4 @@
-import 'package:autism_empowering/Controller/Const/colors.dart';
+import 'package:autism_empowering/core/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -53,7 +53,9 @@ class _StudentChatState extends State<StudentChat> {
                       ? Alignment.centerRight
                       : Alignment.centerLeft,
                   decoration: BoxDecoration(
-                      color: widget.isMe ? primaryColor : Color(0xffF6F6F6),
+                      color: widget.isMe
+                          ? AppColors.primaryColor
+                          : Color(0xffF6F6F6),
                       borderRadius: widget.isMe
                           ? const BorderRadius.only(
                               topLeft: Radius.circular(8),
@@ -72,7 +74,9 @@ class _StudentChatState extends State<StudentChat> {
                       Text(
                         widget.text,
                         style: TextStyle(
-                            color: widget.isMe ? Colors.white : primaryColor,
+                            color: widget.isMe
+                                ? Colors.white
+                                : AppColors.primaryColor,
                             fontSize: 14.sp,
                             fontFamily: 'tajwal'),
                       ),
@@ -108,7 +112,9 @@ class _StudentChatState extends State<StudentChat> {
                       ? Alignment.centerRight
                       : Alignment.centerLeft,
                   decoration: BoxDecoration(
-                      color: widget.isMe ? primaryColor : Colors.grey.shade400,
+                      color: widget.isMe
+                          ? AppColors.primaryColor
+                          : Colors.grey.shade400,
                       borderRadius: widget.isMe
                           ? const BorderRadius.only(
                               topLeft: Radius.circular(8),
@@ -157,7 +163,7 @@ class _StudentChatState extends State<StudentChat> {
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5),
-                                color: primaryColor,
+                                color: AppColors.primaryColor,
                               ),
                               child: const Icon(Icons.file_copy,
                                   color: Colors.white),
@@ -173,14 +179,14 @@ class _StudentChatState extends State<StudentChat> {
                                     ? Text(
                                         'مرفق',
                                         style: TextStyle(
-                                            color: primaryColor,
+                                            color: AppColors.primaryColor,
                                             fontSize: 13.sp,
                                             fontFamily: 'tajwal'),
                                       )
                                     : Text(
                                         'مرفق',
                                         style: TextStyle(
-                                            color: primaryColor,
+                                            color: AppColors.primaryColor,
                                             fontSize: 13.sp,
                                             fontFamily: 'tajwal'),
                                       ),
@@ -190,7 +196,7 @@ class _StudentChatState extends State<StudentChat> {
                                 Text(
                                   'انقر لتحميل الملف',
                                   style: TextStyle(
-                                      color: primaryColor,
+                                      color: AppColors.primaryColor,
                                       fontSize: 12.sp,
                                       fontFamily: 'tajwal'),
                                 ),
@@ -215,7 +221,7 @@ class _StudentChatState extends State<StudentChat> {
                             : Alignment.centerLeft,
                         decoration: BoxDecoration(
                             color: widget.isMe
-                                ? primaryColor
+                                ? AppColors.primaryColor
                                 : Colors.grey.shade400,
                             borderRadius: widget.isMe
                                 ? const BorderRadius.only(

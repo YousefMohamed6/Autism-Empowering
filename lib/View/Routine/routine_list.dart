@@ -1,7 +1,7 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:autism_empowering/Controller/Const/colors.dart';
-import 'package:autism_empowering/Controller/Const/component.dart';
-import 'package:autism_empowering/Controller/Const/texts.dart';
+import 'package:autism_empowering/core/utils/constants/colors.dart';
+import 'package:autism_empowering/core/utils/constants/component.dart';
+import 'package:autism_empowering/core/utils/constants/texts.dart';
 import 'package:autism_empowering/Model/routine_model.dart';
 import 'package:autism_empowering/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -34,7 +34,8 @@ class RoutineListScreen extends StatelessWidget {
             }
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(
-                  child: SpinKitCircle(color: primaryColor, size: 30));
+                  child:
+                      SpinKitCircle(color: AppColors.primaryColor, size: 30));
             }
             final routines = snapshot.data ?? [];
             return ListView.builder(
@@ -59,7 +60,7 @@ class RoutineListScreen extends StatelessWidget {
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
-                          color: primaryColor.withOpacity(0.1)),
+                          color: AppColors.primaryColor.withOpacity(0.1)),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -73,7 +74,8 @@ class RoutineListScreen extends StatelessWidget {
                             ],
                           ),
                           IconButton(
-                            icon: const Icon(Icons.delete, color: primaryColor),
+                            icon: const Icon(Icons.delete,
+                                color: AppColors.primaryColor),
                             onPressed: () {
                               routineController.deleteRoutine(
                                   pref!.getString('userToken')!,
@@ -89,7 +91,7 @@ class RoutineListScreen extends StatelessWidget {
             );
           }),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: primaryColor,
+        backgroundColor: AppColors.primaryColor,
         onPressed: () {
           Navigator.of(context).push(
             MaterialPageRoute(

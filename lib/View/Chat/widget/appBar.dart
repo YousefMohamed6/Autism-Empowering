@@ -1,5 +1,5 @@
-import 'package:autism_empowering/Controller/Const/colors.dart';
-import 'package:autism_empowering/Controller/Const/texts.dart';
+import 'package:autism_empowering/core/utils/constants/colors.dart';
+import 'package:autism_empowering/core/utils/constants/texts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -37,7 +37,7 @@ PreferredSizeWidget customAppBar(
     title: text(
       requesterName,
       fontSize: 16.sp,
-      color: primaryColor,
+      color: AppColors.primaryColor,
     ),
     leading: IconButton(
       onPressed: () {
@@ -45,7 +45,7 @@ PreferredSizeWidget customAppBar(
       },
       icon: const Icon(
         Icons.arrow_back_ios,
-        color: primaryColor,
+        color: AppColors.primaryColor,
         size: 30,
       ),
     ),

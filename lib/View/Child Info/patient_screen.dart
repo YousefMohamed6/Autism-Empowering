@@ -1,33 +1,33 @@
-import 'package:autism_empowering/Controller/Const/colors.dart';
-import 'package:autism_empowering/Controller/Const/component.dart';
-import 'package:autism_empowering/Controller/Const/images.dart';
-import 'package:autism_empowering/Controller/Const/texts.dart';
 import 'package:autism_empowering/View/Check%20Diagonsis/check_by_image.dart';
 import 'package:autism_empowering/View/Doctors/doctor_list.dart';
-import 'package:autism_empowering/View/clock_game/clock_home_page.dart';
-import 'package:autism_empowering/View/drag_and_drob_game/home_game_page.dart';
-import 'package:autism_empowering/View/puzzle_game/screens/puzzle/puzzle_starter_screen.dart';
+import 'package:autism_empowering/core/utils/constants/colors.dart';
+import 'package:autism_empowering/core/utils/constants/component.dart';
+import 'package:autism_empowering/core/utils/constants/images.dart';
+import 'package:autism_empowering/core/utils/constants/texts.dart';
+import 'package:autism_empowering/features/auth/presentation/views/login_view.dart';
+import 'package:autism_empowering/features/clock_game/clock_home_page.dart';
+import 'package:autism_empowering/features/drag_and_drob_game/home_game_page.dart';
+import 'package:autism_empowering/features/puzzle_game/screens/puzzle/puzzle_starter_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 
-import '../../Controller/Auth/auth_service.dart';
 import '../Questionnare/questionare_screen.dart';
 import '../Routine/routine_list.dart';
 import 'child_info_screen.dart';
 
 class PatientScreen extends StatefulWidget {
   const PatientScreen({super.key});
-
+  static const String routeName = '/patient_screen';
   @override
   State<PatientScreen> createState() => _PatientScreenState();
 }
 
 class _PatientScreenState extends State<PatientScreen> {
-  AuthService authService = Get.put(AuthService());
   User? currentUser = FirebaseAuth.instance.currentUser;
   bool isShowDiagnosis = false;
   bool isShowContact = false;
@@ -77,7 +77,8 @@ class _PatientScreenState extends State<PatientScreen> {
         child: ListView(
           children: [
             const SizedBox(height: 20),
-            SizedBox(height: 100, width: 100, child: Image.asset(logo)),
+            SizedBox(
+                height: 100, width: 100, child: Image.asset(AppImages.logo)),
             Divider(
               height: 60,
               color: Colors.grey.shade200,
@@ -98,7 +99,8 @@ class _PatientScreenState extends State<PatientScreen> {
             const SizedBox(height: 10),
             CustomDrawerItem(
               onPressed: () {
-                authService.signOut(context: context);
+                FirebaseAuth.instance.signOut();
+                context.goNamed(LoginView.routeName);
               },
               title: 'Logout',
             ),
@@ -112,7 +114,7 @@ class _PatientScreenState extends State<PatientScreen> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(height: 120, width: 120, child: Image.asset(logo)),
+          SizedBox(height: 120, width: 120, child: Image.asset(AppImages.logo)),
           const SizedBox(height: 50),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 40.w),
@@ -139,7 +141,7 @@ class _PatientScreenState extends State<PatientScreen> {
                   child: CustomButton(
                     onTap: () => startQuestionnaire(context),
                     title: 'With Questionnaire',
-                    color: primaryColor.withOpacity(0.3),
+                    color: AppColors.primaryColor.withOpacity(0.3),
                     borderRadius: 10,
                   ),
                 ),
@@ -154,7 +156,7 @@ class _PatientScreenState extends State<PatientScreen> {
                           transition: Transition.zoom);
                     },
                     title: 'With Face Image',
-                    color: primaryColor.withOpacity(0.3),
+                    color: AppColors.primaryColor.withOpacity(0.3),
                     borderRadius: 10,
                   ),
                 ),
@@ -190,7 +192,7 @@ class _PatientScreenState extends State<PatientScreen> {
                           transition: Transition.zoom);
                     },
                     title: 'Puzzle Game',
-                    color: primaryColor.withOpacity(0.3),
+                    color: AppColors.primaryColor.withOpacity(0.3),
                     borderRadius: 10,
                   ),
                 ),
@@ -203,7 +205,7 @@ class _PatientScreenState extends State<PatientScreen> {
                           transition: Transition.zoom);
                     },
                     title: 'Drag And Drop Game',
-                    color: primaryColor.withOpacity(0.3),
+                    color: AppColors.primaryColor.withOpacity(0.3),
                     borderRadius: 10,
                   ),
                 ),
@@ -216,7 +218,7 @@ class _PatientScreenState extends State<PatientScreen> {
                           transition: Transition.zoom);
                     },
                     title: 'Clock Game',
-                    color: primaryColor.withOpacity(0.3),
+                    color: AppColors.primaryColor.withOpacity(0.3),
                     borderRadius: 10,
                   ),
                 ),
@@ -251,7 +253,7 @@ class _PatientScreenState extends State<PatientScreen> {
                       Get.to(() => DoctorList(), transition: Transition.zoom);
                     },
                     title: 'Contact with  Doctor',
-                    color: primaryColor.withOpacity(0.3),
+                    color: AppColors.primaryColor.withOpacity(0.3),
                     borderRadius: 10,
                   ),
                 ),
@@ -264,7 +266,7 @@ class _PatientScreenState extends State<PatientScreen> {
                           transition: Transition.zoom);
                     },
                     title: 'Make a Routine',
-                    color: primaryColor.withOpacity(0.3),
+                    color: AppColors.primaryColor.withOpacity(0.3),
                     borderRadius: 10,
                   ),
                 ),
