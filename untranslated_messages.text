@@ -11,10 +11,19 @@
     "age",
     "note",
     "doctor",
-    "patient",
+    "parent",
+    "verify_email",
     "please_enter",
     "have_an_account",
     "already_have_an_account",
-    "signup_as"
+    "signup_as",
+    "userNotFound",
+    "invalidEmailorPassword",
+    "weakPassword",
+    "emailAlreadyInUse",
+    "invalidEmail",
+    "somethingWentWrong",
+    "networkRequestFailed",
+    "success"
   ]
 }

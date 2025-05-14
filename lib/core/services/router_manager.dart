@@ -21,11 +21,11 @@ sealed class RouterManager {
     redirect: (context, state) async {
       if (state.fullPath?.isNotEmpty ?? false) return state.fullPath;
       final User? user = FirebaseAuth.instance.currentUser;
-      if (user != null) {
+      if (user != null && user.emailVerified) {
         switch (await _userRole) {
           case UserType.doctor:
             return DoctorScreen.routeName;
-          case UserType.patient:
+          case UserType.parent:
             return PatientScreen.routeName;
         }
       } else {
@@ -89,7 +89,7 @@ sealed class RouterManager {
       case 'doctor':
         return UserType.doctor;
       default:
-        return UserType.patient;
+        return UserType.parent;
     }
   }
 }

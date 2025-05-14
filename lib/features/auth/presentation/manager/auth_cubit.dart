@@ -1,9 +1,12 @@
 import 'package:autism_empowering/core/enums/user_type.dart';
+import 'package:autism_empowering/core/exceptions/user_verified_exception.dart';
 import 'package:autism_empowering/features/auth/data/models/user_model.dart';
 import 'package:autism_empowering/features/auth/domain/usecases/login_use_case.dart';
 import 'package:autism_empowering/features/auth/domain/usecases/sign_out_use_case.dart';
 import 'package:autism_empowering/features/auth/domain/usecases/sign_up_use_case.dart';
 import 'package:bloc/bloc.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -22,8 +25,9 @@ class AuthCubit extends Cubit<AuthState> {
   final ageTextController = TextEditingController();
   final notesTextController = TextEditingController();
   final phoneTextController = TextEditingController();
-  UserType userRole = UserType.patient;
+  UserType userRole = UserType.parent;
   final formKey = GlobalKey<FormState>();
+  String fcmToken = '';
   UserModel get user => UserModel(
         email: emailTextController.text,
         name: nameTextController.text,
@@ -31,7 +35,9 @@ class AuthCubit extends Cubit<AuthState> {
         notes: notesTextController.text,
         role: userRole,
         phone: phoneTextController.text,
+        fcmToken: fcmToken,
       );
+
   Future<void> login() async {
     try {
       if (formKey.currentState!.validate()) {
@@ -42,8 +48,10 @@ class AuthCubit extends Cubit<AuthState> {
         );
         emit(AuthState<UserType>.success(userRole));
       }
-    } catch (e) {
-      emit(AuthState<UserType>.error(e.toString()));
+    } on FirebaseAuthException catch (e) {
+      emit(AuthState<FirebaseAuthException>.error(e.code));
+    } on UserVerifiedException catch (e) {
+      emit(AuthState<UserVerifiedException>.error(e.message));
     }
   }
 
@@ -51,14 +59,15 @@ class AuthCubit extends Cubit<AuthState> {
     emit(AuthState<UserType>.loading());
     try {
       if (formKey.currentState!.validate()) {
+        fcmToken = await FirebaseMessaging.instance.getToken() ?? '';
         await signUpUseCase.execute(
           user: user,
           password: passwordTextController.text,
         );
         emit(AuthState<UserModel>.success(user));
       }
-    } catch (e) {
-      emit(AuthState<UserModel>.error(e.toString()));
+    } on FirebaseAuthException catch (e) {
+      emit(AuthState<UserModel>.error(e.code));
     }
   }
 

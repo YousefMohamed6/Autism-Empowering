@@ -40,7 +40,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get doctor => 'طبيب';
 
   @override
-  String get patient => 'مصاب';
+  String get parent => 'الوالد';
+
+  @override
+  String get verify_email => ' الرجاء التحقق من البريد الالكتروني';
 
   @override
   String get please_enter => 'الرجاء ادخال';
@@ -53,6 +56,30 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get signup_as => 'انشاء حساب ك';
+
+  @override
+  String get userNotFound => 'مستخدم غير موجود';
+
+  @override
+  String get invalidEmailorPassword => 'البريد الالكتروني او كلمة المرور غير صحيحة';
+
+  @override
+  String get weakPassword => 'كلمة المرور ضعيفة';
+
+  @override
+  String get emailAlreadyInUse => 'البريد الالكتروني مستخدم بالفعل';
+
+  @override
+  String get invalidEmail => 'البريد الالكتروني غير صحيح';
+
+  @override
+  String get somethingWentWrong => 'حدث خطأ ما';
+
+  @override
+  String get networkRequestFailed => 'فشل الاتصال بالانترنت';
+
+  @override
+  String get success => 'تم بنجاح';
 
   @override
   String get appClockGame => 'لعبة الساعة';

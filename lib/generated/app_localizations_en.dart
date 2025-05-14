@@ -40,7 +40,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get doctor => 'Doctor';
 
   @override
-  String get patient => 'Patient';
+  String get parent => 'Parent';
+
+  @override
+  String get verify_email => 'Please verify your email';
 
   @override
   String get please_enter => 'Please enter';
@@ -52,7 +55,31 @@ class AppLocalizationsEn extends AppLocalizations {
   String get already_have_an_account => 'Already have an account? Login Now';
 
   @override
-  String get signup_as => 'Signup as';
+  String get signup_as => 'SignUp as ';
+
+  @override
+  String get userNotFound => 'User Not Found';
+
+  @override
+  String get invalidEmailorPassword => 'Invalid Email Or Password';
+
+  @override
+  String get weakPassword => 'Weak Password';
+
+  @override
+  String get emailAlreadyInUse => 'Email Already In Use';
+
+  @override
+  String get invalidEmail => 'Invalid Email';
+
+  @override
+  String get somethingWentWrong => 'Something Went Wrong';
+
+  @override
+  String get networkRequestFailed => 'Network Request Failed';
+
+  @override
+  String get success => 'Success';
 
   @override
   String get appClockGame => 'Clock Game';

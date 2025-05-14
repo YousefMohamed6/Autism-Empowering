@@ -57,12 +57,12 @@ class ChooseTypeScreen extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 60.w),
                 child: CustomButton(
-                  title: localizations.patient,
+                  title: localizations.parent,
                   textColor: Colors.white,
                   onTap: () {
                     context.pushNamed(
                       SignUpView.routeName,
-                      extra: UserType.patient,
+                      extra: UserType.parent,
                     );
                   },
                   color: AppColors.primaryColor,

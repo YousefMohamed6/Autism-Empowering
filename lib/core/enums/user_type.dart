@@ -1,4 +1,4 @@
 enum UserType {
   doctor,
-  patient,
+  parent,
 }

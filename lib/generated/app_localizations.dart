@@ -163,11 +163,17 @@ abstract class AppLocalizations {
   /// **'Doctor'**
   String get doctor;
 
-  /// No description provided for @patient.
+  /// No description provided for @parent.
   ///
   /// In en, this message translates to:
-  /// **'Patient'**
-  String get patient;
+  /// **'Parent'**
+  String get parent;
+
+  /// No description provided for @verify_email.
+  ///
+  /// In en, this message translates to:
+  /// **'Please verify your email'**
+  String get verify_email;
 
   /// No description provided for @please_enter.
   ///
@@ -190,8 +196,56 @@ abstract class AppLocalizations {
   /// No description provided for @signup_as.
   ///
   /// In en, this message translates to:
-  /// **'Signup as'**
+  /// **'SignUp as '**
   String get signup_as;
+
+  /// No description provided for @userNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'User Not Found'**
+  String get userNotFound;
+
+  /// No description provided for @invalidEmailorPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid Email Or Password'**
+  String get invalidEmailorPassword;
+
+  /// No description provided for @weakPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Weak Password'**
+  String get weakPassword;
+
+  /// No description provided for @emailAlreadyInUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Email Already In Use'**
+  String get emailAlreadyInUse;
+
+  /// No description provided for @invalidEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid Email'**
+  String get invalidEmail;
+
+  /// No description provided for @somethingWentWrong.
+  ///
+  /// In en, this message translates to:
+  /// **'Something Went Wrong'**
+  String get somethingWentWrong;
+
+  /// No description provided for @networkRequestFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Network Request Failed'**
+  String get networkRequestFailed;
+
+  /// No description provided for @success.
+  ///
+  /// In en, this message translates to:
+  /// **'Success'**
+  String get success;
 
   /// No description provided for @appClockGame.
   ///
