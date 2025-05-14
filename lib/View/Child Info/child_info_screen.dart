@@ -1,6 +1,6 @@
-import 'package:autism_empowering/Controller/Const/colors.dart';
-import 'package:autism_empowering/Controller/Const/component.dart';
-import 'package:autism_empowering/Controller/Const/texts.dart';
+import 'package:autism_empowering/core/utils/constants/colors.dart';
+import 'package:autism_empowering/core/utils/constants/component.dart';
+import 'package:autism_empowering/core/utils/constants/texts.dart';
 import 'package:autism_empowering/View/Child%20Info/update_child_info.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -80,41 +80,43 @@ class _ChildInfoScreenState extends State<ChildInfoScreen> {
           padding: const EdgeInsets.all(15),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25.r),
-              color: primaryColor.withOpacity(0.3),
-              border: Border.all(color: primaryColor)),
+              color: AppColors.primaryColor.withOpacity(0.3),
+              border: Border.all(color: AppColors.primaryColor)),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
               text('Age: ', fontSize: 18),
               SizedBox(height: 5.h),
-              text(_ageController.text, fontSize: 16, color: primaryColor),
+              text(_ageController.text,
+                  fontSize: 16, color: AppColors.primaryColor),
               SizedBox(height: 10.h),
               text('Gender: ', fontSize: 18),
               SizedBox(height: 5.h),
-              text(_gender, fontSize: 16, color: primaryColor),
+              text(_gender, fontSize: 16, color: AppColors.primaryColor),
               SizedBox(height: 10.h),
               text('Ethnicity: ', fontSize: 18),
               SizedBox(height: 5.h),
               text(_ethnicityController.text,
-                  fontSize: 16, color: primaryColor),
+                  fontSize: 16, color: AppColors.primaryColor),
               SizedBox(height: 10.h),
               text('Was your child born with jaundice: ', fontSize: 18),
               SizedBox(height: 5.h),
-              text(_bornWithJaundice, fontSize: 16, color: primaryColor),
+              text(_bornWithJaundice,
+                  fontSize: 16, color: AppColors.primaryColor),
               SizedBox(height: 10.h),
               text('Family history of autism: ', fontSize: 18),
               SizedBox(height: 5.h),
-              text(_familyHistory, fontSize: 16, color: primaryColor),
+              text(_familyHistory, fontSize: 16, color: AppColors.primaryColor),
               SizedBox(height: 10.h),
               text('Completed by: ', fontSize: 18),
               SizedBox(height: 5.h),
               text(_completedByController.text,
-                  fontSize: 16, color: primaryColor),
+                  fontSize: 16, color: AppColors.primaryColor),
               SizedBox(height: 10.h),
               text('Used app before: ', fontSize: 18),
               SizedBox(height: 5.h),
-              text(_usedAppBefore, fontSize: 16, color: primaryColor),
+              text(_usedAppBefore, fontSize: 16, color: AppColors.primaryColor),
             ],
           ),
         ),

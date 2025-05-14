@@ -1,13 +1,13 @@
-import 'package:autism_empowering/Controller/Const/colors.dart';
-import 'package:autism_empowering/Controller/Const/images.dart';
-import 'package:autism_empowering/Controller/Const/texts.dart';
+import 'package:autism_empowering/core/utils/constants/colors.dart';
+import 'package:autism_empowering/core/utils/constants/images.dart';
+import 'package:autism_empowering/core/utils/constants/texts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-import '../../Controller/Const/component.dart';
 import '../../Model/routine_model.dart';
+import '../../core/utils/constants/component.dart';
 import '../../main.dart';
 import 'routine_controller.dart';
 
@@ -94,7 +94,7 @@ class _AddRoutineScreenState extends State<AddRoutineScreen> {
           child: ListView(
             children: [
               CustomTextField(
-                image: routines,
+                image: AppImages.routines,
                 keyboardType: TextInputType.name,
                 controller: nameController,
                 hint: 'Routine Name',
@@ -104,14 +104,14 @@ class _AddRoutineScreenState extends State<AddRoutineScreen> {
                 title: text('Routine Time'),
                 subtitle: text(DateFormat.jm().format(_selectedDateTime)),
                 trailing: SvgPicture.asset(
-                  time,
-                  color: primaryColor,
+                  AppImages.time,
+                  color: AppColors.primaryColor,
                 ),
                 onTap: () => _selectTime(context),
               ),
               const SizedBox(height: 15),
               CustomTextField(
-                image: notes,
+                image: AppImages.notes,
                 keyboardType: TextInputType.name,
                 controller: notesController,
                 hint: 'Notes',

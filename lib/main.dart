@@ -1,24 +1,17 @@
-import 'package:autism_empowering/Controller/Const/colors.dart';
-import 'package:autism_empowering/View/SPLASH/splash_screen.dart';
-import 'package:autism_empowering/View/clock_game/score/logic/score_cubit.dart';
-import 'package:autism_empowering/View/clock_game/settings/logic/settings_cubit.dart';
-import 'package:autism_empowering/View/clock_game/storage/storage_shared_preferences.dart';
-import 'package:autism_empowering/View/puzzle_game/res/palette.dart';
+import 'package:autism_empowering/core/services/router_manager.dart';
+import 'package:autism_empowering/core/utils/app_initilizer.dart';
+import 'package:autism_empowering/core/utils/constants/colors.dart';
+import 'package:autism_empowering/features/clock_game/score/logic/score_cubit.dart';
+import 'package:autism_empowering/features/clock_game/settings/logic/settings_cubit.dart';
+import 'package:autism_empowering/features/puzzle_game/res/palette.dart';
 import 'package:autism_empowering/firebase_options.dart';
-import 'package:autism_empowering/l10n/l10n.dart';
-import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:autism_empowering/generated/app_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:onesignal_flutter/onesignal_flutter.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import 'Controller/Const/texts.dart';
 
 SharedPreferences? pref;
 void main() async {
@@ -26,29 +19,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  OneSignal.Debug.setLogLevel(OSLogLevel.verbose);
-
-  OneSignal.initialize(oneSignalAppId);
-
-  await OneSignal.Notifications.requestPermission(true);
-  OneSignal.User.getOnesignalId();
-  await AwesomeNotifications().initialize(
-    '',
-    [
-      NotificationChannel(
-        channelKey: 'routine_channel',
-        channelName: 'Routine Channel',
-        channelDescription: 'Channel for Routine Children Reminders',
-        defaultColor: primaryColor,
-        ledColor: Colors.white,
-        importance: NotificationImportance.Max,
-        channelShowBadge: true,
-      ),
-    ],
-  );
-  pref = await SharedPreferences.getInstance();
-  await Permission.notification.request();
-  await StorageSharedPreferences().initial();
+  await AppInitilizer.init();
   runApp(
     MultiBlocProvider(
       providers: [
@@ -77,10 +48,11 @@ class MyApp extends StatelessWidget {
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (_, child) {
-          return GetMaterialApp(
+          return MaterialApp.router(
+            routerConfig: RouterManager.routeConfig,
             title: 'Autism Empowering',
             debugShowCheckedModeBanner: false,
-            color: primaryColor,
+            color: AppColors.primaryColor,
             theme: ThemeData(
               primarySwatch: Colors.blue,
               colorScheme: ColorScheme(
@@ -95,18 +67,11 @@ class MyApp extends StatelessWidget {
                 onSurface: Colors.black,
               ),
             ),
-            home: child,
             locale: const Locale('en'),
-            localizationsDelegates: const [
-              AppLocalizations.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
           );
         },
-        child: const SplashScreen(),
       ),
     );
   }

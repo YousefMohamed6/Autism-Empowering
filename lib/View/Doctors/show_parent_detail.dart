@@ -1,7 +1,7 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:autism_empowering/Controller/Const/colors.dart';
-import 'package:autism_empowering/Controller/Const/component.dart';
-import 'package:autism_empowering/Controller/Const/texts.dart';
+import 'package:autism_empowering/core/utils/constants/colors.dart';
+import 'package:autism_empowering/core/utils/constants/component.dart';
+import 'package:autism_empowering/core/utils/constants/texts.dart';
 import 'package:autism_empowering/Model/routine_model.dart';
 import 'package:autism_empowering/View/Routine/routine_controller.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -29,8 +29,8 @@ class ShowParentDetail extends StatelessWidget {
           leading: const BackButtons(),
           bottom: const TabBar(
             dividerColor: Colors.transparent,
-            labelColor: primaryColor,
-            indicatorColor: primaryColor,
+            labelColor: AppColors.primaryColor,
+            indicatorColor: AppColors.primaryColor,
             tabs: [
               Tab(text: 'Child Info'),
               Tab(text: 'Child Routines'),
@@ -68,7 +68,7 @@ class ChildInformation extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(
-            child: SpinKitCircle(color: primaryColor, size: 30),
+            child: SpinKitCircle(color: AppColors.primaryColor, size: 30),
           );
         }
 
@@ -86,44 +86,50 @@ class ChildInformation extends StatelessWidget {
           margin: EdgeInsets.symmetric(horizontal: 10.w),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25.r),
-            color: primaryColor.withOpacity(0.3),
-            border: Border.all(color: primaryColor),
+            color: AppColors.primaryColor.withOpacity(0.3),
+            border: Border.all(color: AppColors.primaryColor),
           ),
           child: ListView(
             shrinkWrap: true,
             children: [
               text('Age: ', fontSize: 18.sp),
               SizedBox(height: 5.h),
-              text(info['age'], fontSize: 16.sp, color: primaryColor),
+              text(info['age'], fontSize: 16.sp, color: AppColors.primaryColor),
               SizedBox(height: 10.h),
               text('Gender: ', fontSize: 18.sp),
               SizedBox(height: 5.h),
-              text(info['gender'], fontSize: 16.sp, color: primaryColor),
+              text(info['gender'],
+                  fontSize: 16.sp, color: AppColors.primaryColor),
               SizedBox(height: 10.h),
               text('Ethnicity: ', fontSize: 18.sp),
               SizedBox(height: 5.h),
-              text(info['ethnicity'], fontSize: 16.sp, color: primaryColor),
+              text(info['ethnicity'],
+                  fontSize: 16.sp, color: AppColors.primaryColor),
               SizedBox(height: 10.h),
               text('Was your child born with jaundice: ', fontSize: 18.sp),
               SizedBox(height: 5.h),
               text(info['bornWithJaundice'],
-                  fontSize: 16.sp, color: primaryColor),
+                  fontSize: 16.sp, color: AppColors.primaryColor),
               SizedBox(height: 10.h),
               text('Family history of autism: ', fontSize: 18.sp),
               SizedBox(height: 5.h),
-              text(info['familyHistory'], fontSize: 16.sp, color: primaryColor),
+              text(info['familyHistory'],
+                  fontSize: 16.sp, color: AppColors.primaryColor),
               SizedBox(height: 10.h),
               text('Completed by: ', fontSize: 18.sp),
               SizedBox(height: 5.h),
-              text(info['completedBy'], fontSize: 16.sp, color: primaryColor),
+              text(info['completedBy'],
+                  fontSize: 16.sp, color: AppColors.primaryColor),
               SizedBox(height: 10.h),
               text('Country: ', fontSize: 18.sp),
               SizedBox(height: 5.h),
-              text(info['country'], fontSize: 16.sp, color: primaryColor),
+              text(info['country'],
+                  fontSize: 16.sp, color: AppColors.primaryColor),
               SizedBox(height: 10.h),
               text('Used app before: ', fontSize: 18.sp),
               SizedBox(height: 5.h),
-              text(info['usedAppBefore'], fontSize: 16.sp, color: primaryColor),
+              text(info['usedAppBefore'],
+                  fontSize: 16.sp, color: AppColors.primaryColor),
             ],
           ),
         );
@@ -149,7 +155,7 @@ class ChildRoutines extends StatelessWidget {
         }
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(
-            child: SpinKitCircle(color: primaryColor, size: 30),
+            child: SpinKitCircle(color: AppColors.primaryColor, size: 30),
           );
         }
         final routines = snapshot.data ?? [];
@@ -168,7 +174,7 @@ class ChildRoutines extends StatelessWidget {
                 margin: const EdgeInsets.only(bottom: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  color: primaryColor.withOpacity(0.1),
+                  color: AppColors.primaryColor.withOpacity(0.1),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -204,7 +210,7 @@ class ChildQuestionnareResult extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(
             child: SpinKitChasingDots(
-              color: primaryColor,
+              color: AppColors.primaryColor,
               size: 30,
             ),
           );
@@ -250,7 +256,7 @@ class ChildQuestionnareResult extends StatelessWidget {
                       title: text(answer['question']),
                       subtitle: text(
                         answer['selectedAnswer'],
-                        color: primaryColor,
+                        color: AppColors.primaryColor,
                       ),
                     ),
                   );

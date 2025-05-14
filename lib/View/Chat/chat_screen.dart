@@ -1,11 +1,12 @@
-import 'package:autism_empowering/Controller/Chat/send_file.dart';
-import 'package:autism_empowering/Controller/Chat/send_image.dart';
-import 'package:autism_empowering/Controller/Chat/send_message.dart';
-import 'package:autism_empowering/Controller/Const/colors.dart';
-import 'package:autism_empowering/Controller/Const/images.dart';
-import 'package:autism_empowering/Controller/Const/toast.dart';
-import 'package:autism_empowering/Controller/Notification/push_notification.dart';
+import 'package:autism_empowering/View/Chat/Chat/send_file.dart';
+import 'package:autism_empowering/View/Chat/Chat/send_image.dart';
+import 'package:autism_empowering/View/Chat/Chat/send_message.dart';
+import 'package:autism_empowering/core/utils/toast.dart';
 import 'package:autism_empowering/View/Chat/widget/sendMessageBar.dart';
+import 'package:autism_empowering/core/enums/toast_type.dart';
+import 'package:autism_empowering/core/services/one_Signal_service.dart';
+import 'package:autism_empowering/core/utils/constants/colors.dart';
+import 'package:autism_empowering/core/utils/constants/images.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-import '../../Controller/Chat/send_audio.dart';
+import 'Chat/send_audio.dart';
 import 'widget/appBar.dart';
 import 'widget/show_record.dart';
 import 'widget/student_chat.dart';
@@ -93,7 +94,9 @@ class _ChatScreenState extends State<ChatScreen> {
                       map2: messageText,
                       underText: DateFormat('HH:mm').format(messageTime),
                       isMe: id == messageSender,
-                      readIcon: message.get('isRead') == false ? unread : read,
+                      readIcon: message.get('isRead') == false
+                          ? AppImages.unread
+                          : AppImages.read,
                     );
 
                     messageWidgets.add(messageWidget);
@@ -127,9 +130,11 @@ class _ChatScreenState extends State<ChatScreen> {
                       physics: const BouncingScrollPhysics(),
                       children: messageWidgets);
                 } else if (snapshot.hasError) {
-                  return const SpinKitCircle(color: primaryColor, size: 30);
+                  return const SpinKitCircle(
+                      color: AppColors.primaryColor, size: 30);
                 }
-                return const SpinKitCircle(color: primaryColor, size: 30);
+                return const SpinKitCircle(
+                    color: AppColors.primaryColor, size: 30);
               },
             ),
           ),
@@ -147,9 +152,11 @@ class _ChatScreenState extends State<ChatScreen> {
                   messageText: controller.text.trim(),
                 )
                     .then((val) {
-                  sendNotification(widget.resepFcmToken, controller.text,
-                          widget.requesterName)
-                      .then((value) {
+                  OneSignalService.sendNotification(
+                    fcmToken: widget.resepFcmToken,
+                    message: controller.text,
+                    senderName: widget.requesterName,
+                  ).then((value) {
                     controller.clear();
                   });
                 });
@@ -165,9 +172,11 @@ class _ChatScreenState extends State<ChatScreen> {
                 resepFcmToken: widget.resepFcmToken,
               )
                   .then((val) {
-                sendNotification(
-                        widget.resepFcmToken, 'Image', widget.requesterName)
-                    .then((value) {
+                OneSignalService.sendNotification(
+                  fcmToken: widget.resepFcmToken,
+                  message: 'Image',
+                  senderName: widget.requesterName,
+                ).then((value) {
                   controller.clear();
                 });
               });
@@ -182,9 +191,11 @@ class _ChatScreenState extends State<ChatScreen> {
                   reciverName: widget.reciverName,
                 );
               }).then((val) {
-                sendNotification(
-                        widget.resepFcmToken, 'File', widget.requesterName)
-                    .then((value) {
+                OneSignalService.sendNotification(
+                  fcmToken: widget.resepFcmToken,
+                  message: 'File',
+                  senderName: widget.requesterName,
+                ).then((value) {
                   controller.clear();
                 });
               });
@@ -194,7 +205,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 await sendAudio.cancel();
 
                 Get.defaultDialog(
-                  backgroundColor: primaryColor.withOpacity(0.1),
+                  backgroundColor: AppColors.primaryColor.withOpacity(0.1),
                   title: '',
                   content: ShowRecord(
                     isPlaying: isPlaying,
@@ -209,12 +220,13 @@ class _ChatScreenState extends State<ChatScreen> {
                           resepFcmToken: widget.resepFcmToken,
                         )
                             .then((value) {
-                          sendNotification(widget.resepFcmToken, 'Voise Note',
-                                  widget.requesterName)
-                              .then((value) {
+                          OneSignalService.sendNotification(
+                            fcmToken: widget.resepFcmToken,
+                            message: 'Voise Note',
+                            senderName: widget.requesterName,
+                          ).then((value) {
                             controller.clear();
                           });
-
                           Get.back();
                         });
                       } else {}
@@ -223,18 +235,17 @@ class _ChatScreenState extends State<ChatScreen> {
                   ),
                 );
               } else {
-                displaySuccessMotionToast(
-                    context: context,
+                displayToast(
                     title: '',
                     description: 'Speak Now ..',
-                    status: 2);
+                    status: ToastStatus.success);
                 await sendAudio.record();
               }
               setState(() {});
             },
             micColor: sendAudio.recorder.isRecording
                 ? Colors.red.shade300
-                : primaryColor,
+                : AppColors.primaryColor,
           )
         ],
       ),

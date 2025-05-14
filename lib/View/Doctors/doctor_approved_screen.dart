@@ -1,9 +1,9 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:autism_empowering/Controller/Const/colors.dart';
-import 'package:autism_empowering/Controller/Const/component.dart';
-import 'package:autism_empowering/Controller/Const/images.dart';
-import 'package:autism_empowering/Controller/Const/texts.dart';
 import 'package:autism_empowering/View/Doctors/show_parent_detail.dart';
+import 'package:autism_empowering/core/utils/constants/colors.dart';
+import 'package:autism_empowering/core/utils/constants/component.dart';
+import 'package:autism_empowering/core/utils/constants/images.dart';
+import 'package:autism_empowering/core/utils/constants/texts.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -54,7 +54,7 @@ class DoctorApprovedScreen extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
-                child: SpinKitCircle(color: primaryColor, size: 30));
+                child: SpinKitCircle(color: AppColors.primaryColor, size: 30));
           }
 
           if (!snapshot.hasData || snapshot.data!.isEmpty) {
@@ -75,8 +75,8 @@ class DoctorApprovedScreen extends StatelessWidget {
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12.r),
-                      color: primaryColor.withOpacity(0.3),
-                      border: Border.all(color: primaryColor)),
+                      color: AppColors.primaryColor.withOpacity(0.3),
+                      border: Border.all(color: AppColors.primaryColor)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -97,8 +97,8 @@ class DoctorApprovedScreen extends StatelessWidget {
                                   ));
                             },
                             child: SvgPicture.asset(
-                              account,
-                              color: primaryColor,
+                              AppImages.account,
+                              color: AppColors.primaryColor,
                             ),
                           ),
                           SizedBox(width: 10.w),
@@ -113,8 +113,8 @@ class DoctorApprovedScreen extends StatelessWidget {
                                   ));
                             },
                             child: SvgPicture.asset(
-                              chat,
-                              color: primaryColor,
+                              AppImages.chat,
+                              color: AppColors.primaryColor,
                             ),
                           ),
                         ],

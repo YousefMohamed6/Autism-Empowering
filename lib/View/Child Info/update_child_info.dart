@@ -1,7 +1,7 @@
-import 'package:autism_empowering/Controller/Const/colors.dart';
-import 'package:autism_empowering/Controller/Const/component.dart';
-import 'package:autism_empowering/Controller/Const/images.dart';
-import 'package:autism_empowering/Controller/Const/texts.dart';
+import 'package:autism_empowering/core/utils/constants/colors.dart';
+import 'package:autism_empowering/core/utils/constants/component.dart';
+import 'package:autism_empowering/core/utils/constants/images.dart';
+import 'package:autism_empowering/core/utils/constants/texts.dart';
 import 'package:blurry_modal_progress_hud/blurry_modal_progress_hud.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -122,7 +122,8 @@ class _UpdateChildInfoScreenState extends State<UpdateChildInfoScreen> {
   Widget build(BuildContext context) {
     return BlurryModalProgressHUD(
       inAsyncCall: isLoading,
-      progressIndicator: const SpinKitCircle(color: primaryColor, size: 30),
+      progressIndicator:
+          const SpinKitCircle(color: AppColors.primaryColor, size: 30),
       child: Scaffold(
         appBar: AppBar(
           title: text('Update Child Information'),
@@ -148,7 +149,7 @@ class _UpdateChildInfoScreenState extends State<UpdateChildInfoScreen> {
                     controller: _ageController,
                     hint: 'Age',
                     keyboardType: TextInputType.number,
-                    image: age,
+                    image: AppImages.age,
                   ),
                   SizedBox(height: 20.h),
                   Row(
@@ -163,7 +164,7 @@ class _UpdateChildInfoScreenState extends State<UpdateChildInfoScreen> {
                         padding: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(25.r),
-                            color: primaryColor.withOpacity(0.3)),
+                            color: AppColors.primaryColor.withOpacity(0.3)),
                         child: DropdownButtonHideUnderline(
                           child: DropdownButton<String>(
                             isDense: true,
@@ -208,7 +209,7 @@ class _UpdateChildInfoScreenState extends State<UpdateChildInfoScreen> {
                         padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(25.r),
-                            color: primaryColor.withOpacity(0.3)),
+                            color: AppColors.primaryColor.withOpacity(0.3)),
                         child: DropdownButtonHideUnderline(
                           child: DropdownButton<String>(
                             value: _gender,
@@ -241,7 +242,7 @@ class _UpdateChildInfoScreenState extends State<UpdateChildInfoScreen> {
                         padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(25.r),
-                            color: primaryColor.withOpacity(0.3)),
+                            color: AppColors.primaryColor.withOpacity(0.3)),
                         child: DropdownButtonHideUnderline(
                           child: DropdownButton<String>(
                             value: _bornWithJaundice,
@@ -275,7 +276,7 @@ class _UpdateChildInfoScreenState extends State<UpdateChildInfoScreen> {
                         padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(25.r),
-                            color: primaryColor.withOpacity(0.3)),
+                            color: AppColors.primaryColor.withOpacity(0.3)),
                         child: DropdownButtonHideUnderline(
                           child: DropdownButton<String>(
                             isDense: true,
@@ -310,7 +311,7 @@ class _UpdateChildInfoScreenState extends State<UpdateChildInfoScreen> {
                     controller: _completedByController,
                     hint: 'Who is completing this test?',
                     keyboardType: TextInputType.text,
-                    image: account,
+                    image: AppImages.account,
                   ),
                   SizedBox(height: 10.h),
                   SizedBox(height: 20.h),
@@ -325,7 +326,7 @@ class _UpdateChildInfoScreenState extends State<UpdateChildInfoScreen> {
                         padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(25.r),
-                            color: primaryColor.withOpacity(0.3)),
+                            color: AppColors.primaryColor.withOpacity(0.3)),
                         child: DropdownButtonHideUnderline(
                           child: DropdownButton<String>(
                             value: _usedAppBefore,

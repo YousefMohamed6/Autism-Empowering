@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:autism_empowering/Controller/Const/component.dart';
-import 'package:autism_empowering/Controller/Const/texts.dart';
+import 'package:autism_empowering/core/utils/constants/component.dart';
+import 'package:autism_empowering/core/utils/constants/texts.dart';
 import 'package:autism_empowering/Model/child_info_model.dart';
 import 'package:autism_empowering/View/Check%20Diagonsis/check_by_image.dart';
 import 'package:autism_empowering/View/Child%20Info/patient_screen.dart';

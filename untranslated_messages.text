@@ -1,0 +1,29 @@
+{
+  "tr": [
+    "welcome",
+    "email",
+    "password",
+    "login",
+    "logout",
+    "signUp",
+    "name",
+    "phone",
+    "age",
+    "note",
+    "doctor",
+    "parent",
+    "verify_email",
+    "please_enter",
+    "have_an_account",
+    "already_have_an_account",
+    "signup_as",
+    "userNotFound",
+    "invalidEmailorPassword",
+    "weakPassword",
+    "emailAlreadyInUse",
+    "invalidEmail",
+    "somethingWentWrong",
+    "networkRequestFailed",
+    "success"
+  ]
+}

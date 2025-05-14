@@ -1,10 +1,10 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:autism_empowering/Controller/Const/colors.dart';
-import 'package:autism_empowering/Controller/Const/images.dart';
-import 'package:autism_empowering/Controller/Const/texts.dart';
-import 'package:autism_empowering/Controller/Notification/push_notification.dart';
 import 'package:autism_empowering/Model/doctor_model.dart';
 import 'package:autism_empowering/View/Chat/chat_screen.dart';
+import 'package:autism_empowering/core/services/one_Signal_service.dart';
+import 'package:autism_empowering/core/utils/constants/colors.dart';
+import 'package:autism_empowering/core/utils/constants/images.dart';
+import 'package:autism_empowering/core/utils/constants/texts.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +14,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../Controller/Const/component.dart';
 import '../../Model/doctor_request_model.dart';
+import '../../core/utils/constants/component.dart';
 import '../../main.dart';
 
 class DoctorList extends StatefulWidget {
@@ -63,7 +63,8 @@ class _DoctorListState extends State<DoctorList> {
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(
-                  child: SpinKitCircle(color: primaryColor, size: 30));
+                  child:
+                      SpinKitCircle(color: AppColors.primaryColor, size: 30));
             } else if (snapshot.hasError) {
               return Center(child: text('حدث خطأ: ${snapshot.error}'));
             } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
@@ -81,7 +82,7 @@ class _DoctorListState extends State<DoctorList> {
                       margin: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
-                          color: primaryColor.withOpacity(0.3)),
+                          color: AppColors.primaryColor.withOpacity(0.3)),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -156,8 +157,11 @@ class _FollowButtonState extends State<FollowButton> {
       'doctorFcmToken': doctorFcmToken,
       'patientFcmToken': patientFcmToken,
     });
-    sendNotification(
-        doctorFcmToken, '', '$patientName Send Request to Following');
+    OneSignalService.sendNotification(
+      fcmToken: doctorFcmToken,
+      message: '',
+      senderName: '$patientName Send Request to Following',
+    );
     debugPrint('Follow request sent successfully');
   }
 
@@ -167,7 +171,12 @@ class _FollowButtonState extends State<FollowButton> {
         .collection('follow_requests')
         .doc(requestId)
         .delete();
-    sendNotification(doctorFcmToken, '', '$patientName Unfollowing');
+    OneSignalService.sendNotification(
+      fcmToken: doctorFcmToken,
+      message: '',
+      senderName: '$patientName Unfollowing',
+    );
+
     debugPrint('Follow request $requestId removed');
   }
 
@@ -228,7 +237,7 @@ class _FollowButtonState extends State<FollowButton> {
   @override
   Widget build(BuildContext context) {
     if (_isLoading) {
-      return const SpinKitCircle(color: primaryColor, size: 30);
+      return const SpinKitCircle(color: AppColors.primaryColor, size: 30);
     }
 
     if (_followRequest == null) {
@@ -275,8 +284,8 @@ class _FollowButtonState extends State<FollowButton> {
                     ));
               },
               icon: SvgPicture.asset(
-                chat,
-                color: primaryColor,
+                AppImages.chat,
+                color: AppColors.primaryColor,
               )),
         ],
       );
